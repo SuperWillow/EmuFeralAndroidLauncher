@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         TextView status = findViewById(R.id.textView);
         new Thread(() -> {
             runOnUiThread(() -> {
-                status.setText("Preparing backend proxies...");
+                status.setText("Подготавливаем прокси сервера...");
             });
 
             if (!isServiceRunning(Service.class))
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             // Start game
             try {
                 runOnUiThread(() -> {
-                    status.setText("Checking fer.al app...");
+                    status.setText("Чекаем установленную версию игры fer.al...");
                 });
 
                 Intent launch = getPackageManager().getLaunchIntentForPackage("com.WildWorks.Feral");
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         runOnUiThread(() -> {
-                            status.setText("Modifying game client...");
+                            status.setText("Модифицируем клиент игры...");
                         });
 
                         // Its not
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                         if (ip == null) {
                             // Set message
                             runOnUiThread(() -> {
-                                status.setText("Please connect to a Wi-fi network for the following steps, you will need a pc on the same network.");
+                                status.setText("Пожалуйста, подключитесь к Wi-fi для следующих шагов, но для этого нужен ПК с этой же сетью.");
                             });
 
                             while (ip == null) {
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                         // Set message
                         service.registerModServerProcessor(sharedAssets);
                         final String ipF = ip;
-                        statusMessage = "Modification has been prepared, on a windows/linux/mac device, please visit the following website to apply the modification on this device.:\n\nhttp://" + ipF + ":" + service.modServer.getPort() + "/guide";
+                        statusMessage = "Модификация уже подготавливается, на твоем Windows/macOS/Linux устройстве, пожалуйста посетите сайт для того чтобы подтвердить модификацию на твоем устройстве.:\n\nhttp://" + ipF + ":" + service.modServer.getPort() + "/guide";
                         runOnUiThread(() -> {
                             status.setText(statusMessage);
                         });
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
                     service.modServer.stop();
                     runOnUiThread(() -> {
-                        status.setText("Launching game...");
+                        status.setText("Запускаем игру...");
                     });
 
                     launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -259,13 +259,13 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(launch);
                 } else {
                     runOnUiThread(() -> {
-                        status.setText("Fer.al is not installed, please install the original client to perform client modification.");
+                        status.setText("Fer.al не установлен, пожалуйста установите ориг. клиент, чтобы начать модификацию клиента.");
                     });
                 }
             } catch (Exception e) {
                 // Log
                 runOnUiThread(() -> {
-                    status.setText("Caught an exception:\n" + e);
+                    status.setText("Произошла ошибка, пожалуйста повторите ещё раз:\n" + e);
                 });
             }
         }).start();
