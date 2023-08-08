@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                         // Set message
                         service.registerModServerProcessor(sharedAssets);
                         final String ipF = ip;
-                        statusMessage = "Модификация уже подготавливается, на твоем Windows/macOS/Linux устройстве, пожалуйста посетите сайт для того чтобы подтвердить модификацию на твоем устройстве.:\n\nhttp://" + ipF + ":" + service.modServer.getPort() + "/guide";
+                        statusMessage = "Модификация уже подготавливается, на твоем Windows/macOS/Linux устройстве, пожалуйста посетите сайт и следуете инструкциями для того чтобы подтвердить модификацию на твоем устройстве.:\n\nhttp://" + ipF + ":" + service.modServer.getPort() + "/guide";
                         runOnUiThread(() -> {
                             status.setText(statusMessage);
                         });
